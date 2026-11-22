@@ -1,7 +1,9 @@
 # JABARBULLYING
 
 **Hentikan Ririwit!** 🛡️
-
+<div class="center">
+  <img src="antituch.png"/>
+</div>
 JABARBULLYING merupakan platform digital yang dirancang sebagai ruang aman bagi anak-anak untuk melaporkan tindakan perundungan (bullying), khususnya di lingkungan sekolah.
 
 Platform ini mengangkat pendekatan budaya Sunda melalui penggunaan bahasa dan identitas visual lokal untuk meningkatkan kesadaran mengenai pentingnya perlindungan anak serta menciptakan lingkungan sekolah yang aman, nyaman, dan bebas dari perundungan.
