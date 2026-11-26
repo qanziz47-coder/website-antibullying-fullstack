@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* --- DEFAULT THEME (JAWA BARAT) --- */
+:root {
+  --theme-bg: #fcfbf7;
+  --theme-text: #022c22;
+  --theme-primary: #064e3b;
+  --theme-accent: #d97706;
+  --theme-bg-image: url('/back.jpg');
+  --theme-font: var(--font-playfair), serif;
+}
+
+/* --- THEME JEPANG --- */
+body[data-theme="ja"] {
+  --theme-bg: #fffafa;
+  --theme-text: #1a202c;
+  --theme-primary: #bc002d;
+  --theme-accent: #f472b6;
+  --theme-bg-image: url('/jp.jpg'); /* Pastikan file ini ada! */
+  --theme-font: var(--font-jp), sans-serif;
+}
+
+/* --- THEME SPANYOL --- */
+body[data-theme="es"] {
+  --theme-bg: #fffbeb;
+  --theme-text: #431407;
+  --theme-primary: #b91c1c; /* Merah Spanyol */
+  --theme-accent: #f59e0b;  /* Kuning Emas */
+  --theme-bg-image: url('/sp.webp'); /* Pastikan file ini ada! */
+  --theme-font: var(--font-inter), sans-serif;
+}
+
+/* --- LATAR BELAKANG DINAMIS --- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: var(--theme-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.25; 
+  z-index: -1;
+  transition: opacity 1s ease, background-image 1s ease;
+}
+
+/* --- GANTI WARNA KELAS TAILWIND MENJADI VARIABEL --- */
+.bg-jabar-green { background-color: var(--theme-primary) !important; transition: background-color 0.8s ease; }
+.text-jabar-green { color: var(--theme-primary) !important; transition: color 0.8s ease; }
+.border-jabar-green { border-color: var(--theme-primary) !important; transition: border-color 0.8s ease; }
+
+.bg-jabar-gold { background-color: var(--theme-accent) !important; transition: background-color 0.8s ease; }
+.text-jabar-gold { color: var(--theme-accent) !important; transition: color 0.8s ease; }
+
+.text-jabar-dark { color: var(--theme-text) !important; transition: color 0.8s ease; }
+.bg-jabar-dark { background-color: var(--theme-text) !important; transition: background-color 0.8s ease; }
+/* --- EFEK LAINNYA (TETAP SEPERTI SEBELUMNYA) --- */
+.font-sunda { font-family: var(--font-sundanese), sans-serif; }
+.bg-kertas-kuno {
+  background-color: #f4eee0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+}
+.kertas-manuskrip {
+  background-color: #f9f6f0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  box-shadow: inset 0 0 40px rgba(217, 119, 6, 0.1), 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e0d8;
+}
+@keyframes float {
+  0% { transform: translateY(0px) rotate(-6deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
+  100% { transform: translateY(0px) rotate(-6deg); }
+}
+.bg-prasasti {
+  background-color: #2d2a26;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 20px 25px -5px rgba(0,0,0,0.5);
+  border: 2px solid #4a443c;
+}
+.btn-batu {
+  background-color: #1c3d2b;
+  border: 2px solid #8b7355;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), 0 6px 0 #0f2419;
+  transition: all 0.2s;
+}
+.btn-batu:active {
+  transform: translateY(6px);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), 0 0 0 #0f2419;
+}
+/* --- EFEK TOMBOL LIQUID WAVE FILL --- */
+.btn-liquid {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+}
+
+.btn-liquid::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 200%;
+  /* GUNAKAN WARNA TEMA, TAPI PASTIKAN JATUH KE WARNA GELAP JIKA TIDAK ADA */
+  background-color: var(--theme-primary, #064e3b); 
+  border-radius: 40%;
+  bottom: -200%;
+  z-index: -1;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-liquid:hover::before {
+  bottom: -30%;
+  color: #ffffff !important;
+}
+
+.btn-liquid:hover {
+  color: #ffffff !important;
+  border-color: var(--theme-primary, #064e3b) !important;
+}
+.btn-lang { position: relative; }
+.btn-lang::after {
+  content: attr(data-flag);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 50;
+}
+.btn-lang::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 50;
+}
+.btn-lang:hover::after,
+.btn-lang:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+}
+.btn-lang:hover::after { top: -40px; }
+.btn-lang:hover::before { top: -12px; }
